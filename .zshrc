@@ -60,3 +60,62 @@ setopt correct
 #export PATH="$PATH:/usr/local/var/postgres"
 export PATH="$PATH:/Users/leoota/miniconda3/bin"
 
+#########################
+setopt auto_list
+setopt auto_menu
+zstyle ':completion:*:default' menu select=1
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+export LANG=ja_JP.UTF-8
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+setopt share_history
+
+if [[ ! -d ~/.zplug ]];then
+    git clone http://github.com/zplug/zplug ~/.zplug
+fi
+
+source ~/.zplug/init.zsh
+
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
+
+#if ! zplug check --verbose; then
+#    printf "Install? [Y/n]: "
+#      if read -q; then
+#            echo; zplug install
+#              fi
+#fi
+
+zplug load --verbose
+
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
+
+zplug "mollifier/anyframe"
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "motemen/ghq", as:command, from:gh-r
+
+export PATH="$PATH:/Users/leoota/miniconda3/bin"
+conda activate tensorflow0120
+
+#__conda_setup="$('/Users/leoota/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/Users/leoota/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/Users/leoota/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/Users/leoota/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin/$PATH"
+export PATH="$PATH:$GOPATH/bin"
