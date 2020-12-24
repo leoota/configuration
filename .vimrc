@@ -39,3 +39,20 @@ Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 filetype plugin indent on
 
+"if has('nvim')
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugin'}
+"else
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#eneble_at_startup = 1
+
+"call plug#begin('/home/leo/.vim/plugged')
+"Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'}
+"call plug#end()
+
+" call vundle#begin()
+" Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'}
+" call vundle#end()
+
